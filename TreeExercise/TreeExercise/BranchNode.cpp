@@ -15,9 +15,9 @@ BranchNode::BranchNode(BranchNode* r, bool l)
 	}//end if
 	
 	data = root->data;
-	if (left) {
+	if (!left) {
 		//get left node of root
-		if (root->lBranch != nullptr) {
+		if (root->lBranch) {
 			neighbor = root->lBranch;
 			data += neighbor->data;
 		}
@@ -25,7 +25,7 @@ BranchNode::BranchNode(BranchNode* r, bool l)
 
 	else {
 		//get right node of root
-		if (root->rBranch != nullptr) {
+		if (root->rBranch) {
 			neighbor = root->rBranch;
 			data += neighbor->data;
 		}
@@ -47,6 +47,6 @@ void BranchNode::BranchOut()
 	//create left and right branches
 	lBranch = new BranchNode(this, true);
 	rBranch = new BranchNode(this, false);
-	lBranch->neighbor = rBranch;
-	rBranch->neighbor = lBranch;
+	//lBranch->neighbor = rBranch;
+	//rBranch->neighbor = lBranch;
 }
